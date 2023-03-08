@@ -1,0 +1,26 @@
+.header {
+  background-color: #2196f3;
+  padding: 40px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20%;
+}
+
+.header__course {
+  font-size: 24px;
+}
+
+.form {
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  flex-direction: column;
+  box-shadow: 1 1 1;
+}
+
+.select-wrapper {
+  display: flex;
+  gap: 100px;
+}
