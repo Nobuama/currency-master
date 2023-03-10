@@ -1,11 +1,9 @@
 import {
   Container,
-  FormControl,
-  MenuItem,
-  Select,
   TextField,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Select } from './Select';
 
 export const Converter = ({ usd, eur }) => {
   const [inputCurrency, setInputCurrency] = useState(1);
@@ -19,7 +17,7 @@ export const Converter = ({ usd, eur }) => {
   const calc = (inp, outp) => {
     if (inp === 1) {
       return amount / outp;
-    } else if (inp != 1 && outp != 1) {
+    } else if (inp !== 1 && outp !== 1) {
       return (amount * inp) / outp;
     } else if (outp === 1) {
       return amount * inp * outp;
@@ -33,34 +31,12 @@ export const Converter = ({ usd, eur }) => {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
-
       <div className="select-wrapper">
-        <FormControl sx={{ width: 200 }}>
-          <Select
-            onChange={(e) => setInputCurrency(e.target.value)}
-            displayEmpty
-            value={inputCurrency}
-          >
-            <MenuItem value={usd}>USD</MenuItem>
-            <MenuItem value={eur}>EUR</MenuItem>
-            <MenuItem value={1}>UAH</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControl sx={{ width: 200 }}>
-          <Select
-            displayEmpty
-            onChange={(e) => setOutputCurrency(e.target.value)}
-            value={outputCurrency}
-          >
-            <MenuItem value={usd}>USD</MenuItem>
-            <MenuItem value={eur}>EUR</MenuItem>
-            <MenuItem value={1}>UAH</MenuItem>
-          </Select>
-        </FormControl>
+        <Select name={"From"} usd={usd} eur={eur} func={setInputCurrency} value={inputCurrency}/>
+        <Select name={"To"} usd={usd} eur={eur} func={setOutputCurrency} value={outputCurrency}/>
       </div>
       <TextField
-        placeholder="Result"
+        label="Result"
         value={calc(inputCurrency, outputCurrency)}
       />
     </Container>

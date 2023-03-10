@@ -18,9 +18,10 @@
   padding: 20px;
   flex-direction: column;
   box-shadow: 1 1 1;
+  gap: 18px;
 }
 
 .select-wrapper {
   display: flex;
-  gap: 100px;
+  justify-content: space-around;
 }
