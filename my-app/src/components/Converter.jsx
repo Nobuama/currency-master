@@ -1,9 +1,6 @@
-import {
-  Container,
-  TextField,
-} from '@mui/material';
+import { Container, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { Select } from './Select';
+import { ChooseCurrency } from './ChooseCurrency';
 
 export const Converter = ({ usd, eur }) => {
   const [inputCurrency, setInputCurrency] = useState(1);
@@ -32,13 +29,22 @@ export const Converter = ({ usd, eur }) => {
         onChange={(e) => setAmount(e.target.value)}
       />
       <div className="select-wrapper">
-        <Select name={"From"} usd={usd} eur={eur} func={setInputCurrency} value={inputCurrency}/>
-        <Select name={"To"} usd={usd} eur={eur} func={setOutputCurrency} value={outputCurrency}/>
+        <ChooseCurrency
+          name={'From'}
+          usd={usd}
+          eur={eur}
+          func={setInputCurrency}
+          value={inputCurrency}
+        />
+        <ChooseCurrency
+          name={'To'}
+          usd={usd}
+          eur={eur}
+          func={setOutputCurrency}
+          value={outputCurrency}
+        />
       </div>
-      <TextField
-        label="Result"
-        value={calc(inputCurrency, outputCurrency)}
-      />
+      <TextField label="Result" value={calc(inputCurrency, outputCurrency)} />
     </Container>
   );
 };
